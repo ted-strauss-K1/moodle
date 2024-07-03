@@ -92,6 +92,10 @@ if ($options['categoryid']) {
     throw new \moodle_exception('invalidoption');
 }
 
+if($USER->id === 0){
+    $USER = $admin;
+}
+
 $backupdir = restore_controller::get_tempdir_name(SITEID, $USER->id);
 $path = make_backup_temp_directory($backupdir);
 
